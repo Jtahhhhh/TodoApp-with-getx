@@ -6,6 +6,7 @@ import 'package:getx_course/app/data/model/taskModel.dart';
 import 'package:getx_course/app/modules/home/home_controller.dart';
 import 'package:getx_course/app/core/utils/extentions.dart';
 import 'package:getx_course/app/modules/home/widget/add_card.dart';
+import 'package:getx_course/app/modules/home/widget/add_dialog.dart';
 import 'package:getx_course/app/modules/home/widget/task_card.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -68,7 +69,9 @@ class HomeView extends GetView<HomeController> {
           return Obx(
                 () => FloatingActionButton(
                 backgroundColor: !controller.deleting.value ?Colors.blue :Colors.red,
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => AddDialog(),transition: Transition.rightToLeft);
+                },
                 child: !controller.deleting.value ?Icon(Icons.add,color: Colors.white,): Icon(Icons.delete,color: Colors.white,)
             ),
           );
